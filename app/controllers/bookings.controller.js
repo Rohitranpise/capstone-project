@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 //get all bookings:
 exports.findAll = (req, res) => {
     const book_by = req.query.book_by;
-    var condition = book_by ? { dest_name: { [Op.iLike]: `%${book_by}%` } } : null;
+    var condition = book_by ? { book_by: { [Op.iLike]: `%${book_by}%` } } : null;
     Booking.findAll({ where: condition })
         .then(data => {
             res.send(data);

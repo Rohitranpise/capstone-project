@@ -3,6 +3,8 @@ const config = require("../config/auth.config");
 const User = db.user;
 const Role = db.role;
 const Op = db.Sequelize.Op;
+/*Sequelize provide operator functionality to manage this types of query.
+ For using operator we need to import op from sequelize */
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
@@ -13,7 +15,7 @@ exports.signup = (req, res) => {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
     })
-        .then(user => {
+        .then(user => {    //if user wanted to insert his role
             if (req.body.roles) {
                 Role.findAll({
                     where: {
@@ -27,7 +29,7 @@ exports.signup = (req, res) => {
                     });
                 });
             } else {
-                // user role = 1
+                // set user role = 1
                 user.setRoles([1]).then(() => {
                     res.send({ message: "User was registered successfully!" });
                 });

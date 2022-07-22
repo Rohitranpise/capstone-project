@@ -51,7 +51,7 @@ db.hotels.belongsTo(db.destinations, {
 })
 
 //many to many relation between destinations and tags
-//sequelize automatically creaates a third (junction table) .. "dest_tag"
+//sequelize automatically creates a third (junction table) .. "dest_tag"
 //sequelize will add "dest_id" and "tag_id" columns into new table.
 db.destinations.belongsToMany(db.tags, {
     through: "dest_tag",
