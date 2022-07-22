@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.json({ message: "welcome to login application" })
+  res.json({ message: "welcome to travels application" })
 })
 
 require('./app/routes/auth.routes')(app);
@@ -25,7 +25,7 @@ require('./app/routes/bookings.routes')(app);
 const db = require("./app/models");
 const Role = db.role;
 const Tag = db.tags;
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({force : true}).then(() => {
   console.log('Drop and Resync Db');
   initial();
   update();

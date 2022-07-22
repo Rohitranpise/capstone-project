@@ -1,7 +1,5 @@
-const { tags, destinations } = require("../models");
 const db = require("../models")
 const Destination = db.destinations;
-const Tags = db.tags
 const TAGS = db.TAGS
 const Op = db.Sequelize.Op;
 
@@ -55,12 +53,12 @@ exports.findAllByTag = (req, res) => {
     var condition = dest_tag ? { dest_tag: { [Op.iLike]: `%${dest_tag}%` } } : null;
     Destination.findAll({ where: condition })
         .then(data => {
-            res.send(data)
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "some error occurred while retriving Destination."
+                    err.message || "Some error occurred while retrieving Destinations."
             });
         });
 };
