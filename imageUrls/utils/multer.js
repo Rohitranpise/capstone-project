@@ -1,4 +1,4 @@
-const multer = require("multer");
+const multer = require("multer"); //multer is body-parsing middleware that handles content-type 
 const path = require("path");
 
 //multer config
