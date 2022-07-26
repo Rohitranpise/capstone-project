@@ -1,16 +1,23 @@
 const express = require("express");
 const bodyParser = require("body-parser")
+/*it is nodejs middleware, 
+Parse incoming request bodies in a middleware before your handlers,
+ available under the req.body property.*/
 const cors = require("cors");
+/*CORS stands for Cross-Origin Resource Sharing. 
+It allows us to relax the security applied to an API*/
+require('dotenv').config()
 const app = express();
+app.set('view engine', 'ejs')
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));
 
-app.use(bodyParser.json())
+app.use(bodyParser.json())// it parses incoming requests with json payloads.
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));// it parses incoming requests with relencoded payload.
 
 app.get("/", (req, res) => {
   res.json({ message: "welcome to travels application" })
