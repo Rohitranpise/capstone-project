@@ -7,6 +7,9 @@ const sequelize = new Sequelize(
     {
         host: config.HOST,
         dialect: config.dialect,
+        "dialectOptions": {
+            "ssl": true
+        },
         operatorsAliases: false,
         pool: {
             max: config.pool.max,
@@ -73,7 +76,7 @@ db.user.hasMany(db.bookings);
 //one to many
 db.bookings.belongsTo(db.hotels, {
     foreignKey: "hotel_id"
-}); 
+});
 db.hotels.hasMany(db.bookings);
 
 
