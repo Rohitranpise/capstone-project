@@ -8,8 +8,8 @@ const sequelize = new Sequelize(
         host: config.HOST,
         port: config.PORT,
         dialect: config.dialect,
-        "dialectOptions": {
-            "ssl": true
+        dialectOptions: {
+            ssl: { require: true, rejectUnauthorized: false },
         },
         operatorsAliases: false,
         pool: {
